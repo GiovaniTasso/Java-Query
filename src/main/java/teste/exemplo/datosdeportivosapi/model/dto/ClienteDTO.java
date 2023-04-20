@@ -2,7 +2,6 @@ package teste.exemplo.datosdeportivosapi.model.dto;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Value;
 import teste.exemplo.datosdeportivosapi.model.entity.Cliente;
 
 import lombok.Data;
@@ -13,7 +12,7 @@ import lombok.Data;
 public class ClienteDTO {
 
     @Id
-    private Long id;
+    private Long protocolo;
     private String nmAndamento;
     private String dtAndamento;
     private String dtAndamentoArquivo;
@@ -24,7 +23,7 @@ public class ClienteDTO {
 
     }
     public ClienteDTO(Cliente cliente){
-        this.id = cliente.getId();
+        this.protocolo = cliente.getProtocolo();
         this.nmAndamento = cliente.getNmAndamento();
         this.dtAndamento = cliente.getDtAndamento();
         this.dtAndamentoArquivo = cliente.getDtAndamentoArquivo();

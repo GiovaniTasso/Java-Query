@@ -1,15 +1,15 @@
 package teste.exemplo.datosdeportivosapi.controller;
 
-import java.util.Collection;
-import java.util.List;
-
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import teste.exemplo.datosdeportivosapi.model.dto.ClienteDTO;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import teste.exemplo.datosdeportivosapi.model.entity.Personalizado;
-import teste.exemplo.datosdeportivosapi.model.form.ClienteForm;
 import teste.exemplo.datosdeportivosapi.service.ClienteService;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/cliente")
@@ -18,28 +18,18 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @PostMapping
-    public ClienteDTO salvar(@RequestBody @Valid ClienteForm clienteForm){
-        return clienteService.createCliente(clienteForm);
-    }
-    //@GetMapping
-    //public List<ClienteDTO> list(){
-    //    return clienteService.findAllCliente();
-   // }
 
-    @GetMapping("/{id}")
-    public ClienteDTO findById(@PathVariable("id") Long id){
-        return clienteService.findClienteById(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") Long id){
-        clienteService.deleteById(id);
+    @GetMapping(value = "/ri/protocolo/{protocolo}")
+    public ResponseEntity<Collection<Personalizado>> getbyID(@PathVariable Long protocolo){
+        Collection<Personalizado> personalizado = clienteService.getbyID(protocolo);
+        if (personalizado == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(personalizado);
     }
 
     @GetMapping
     public Collection<Personalizado> list(){
-
         return clienteService.findallprotocolos();
     }
 

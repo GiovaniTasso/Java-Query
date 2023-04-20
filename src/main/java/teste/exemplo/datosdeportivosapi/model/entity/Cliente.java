@@ -12,7 +12,7 @@ import lombok.*;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long protocolo;
     private String nmAndamento;
     private String dtAndamento;
     private String dtAndamentoArquivo;

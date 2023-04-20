@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 public interface Personalizado {
 
 
-
+     @Value("#{target.protocolo}")
+     Long getprotocolo();
      @Value("#{target.tipo}")
      String getnmAndamento();
      @Value("#{target.data_entrada}")
@@ -16,7 +17,6 @@ public interface Personalizado {
      LocalDateTime getdtAndamentoArquivo();
      @Value("#{target.hora}")
      String gethrAndamento();
-     @Value("#{target.nome}")
      String getnmArquivo();
 
 
