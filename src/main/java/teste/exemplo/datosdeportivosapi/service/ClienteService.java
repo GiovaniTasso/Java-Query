@@ -2,6 +2,7 @@ package teste.exemplo.datosdeportivosapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import teste.exemplo.datosdeportivosapi.model.entity.Certidao;
 import teste.exemplo.datosdeportivosapi.model.entity.Personalizado;
 import teste.exemplo.datosdeportivosapi.repository.ClienteRepository;
 
@@ -25,6 +26,13 @@ public class ClienteService {
 
     }
 
+    public Collection<Certidao> findallCertidao(){
+        return clienteRepository.findallcertidao();
+    }
+
+    public Collection<Certidao> getCertidaoByid(Long protocolo){
+        return clienteRepository.findAllCertidaobyId(protocolo);
+    }
 
 
 

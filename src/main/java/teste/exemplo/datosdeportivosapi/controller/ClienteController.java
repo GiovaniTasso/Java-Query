@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import teste.exemplo.datosdeportivosapi.model.entity.Certidao;
 import teste.exemplo.datosdeportivosapi.model.entity.Personalizado;
 import teste.exemplo.datosdeportivosapi.service.ClienteService;
 
@@ -30,7 +31,22 @@ public class ClienteController {
 
     @GetMapping
     public Collection<Personalizado> list(){
+
         return clienteService.findallprotocolos();
+    }
+
+    @GetMapping(value = "/certidao")
+    public Collection<Certidao> listcertidao(){
+        return clienteService.findallCertidao();
+    }
+
+    @GetMapping(value = "/ri/certidao/{protocolo}")
+    public ResponseEntity<Collection<Certidao>> getCertidaoByid(@PathVariable Long protocolo){
+        Collection<Certidao> certidaos = clienteService.getCertidaoByid(protocolo);
+        if (certidaos == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(certidaos);
     }
 
 }
