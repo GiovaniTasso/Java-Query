@@ -1,10 +1,9 @@
-package teste.exemplo.datosdeportivosapi.model.entity;
+package teste.exemplo.datosdeportivosapi.model.dto.andamento;
 
 import org.springframework.beans.factory.annotation.Value;
-
 import java.time.LocalDateTime;
 
-public interface Certidao {
+public interface Andamento {
 
 
     @Value("#{target.protocolo}")

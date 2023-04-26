@@ -1,15 +1,15 @@
-package teste.exemplo.datosdeportivosapi.model.entity;
+package teste.exemplo.datosdeportivosapi.model.entity.andamentoclass;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 
 @Data
-@Table(name = "cliente")
-@Entity(name = "cliente")
+@Table
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cliente {
+public class AndamentoClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long protocolo;
