@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import teste.exemplo.datosdeportivosapi.model.dto.andamento.Andamento;
+import teste.exemplo.datosdeportivosapi.model.dto.protesto.Documento;
 import teste.exemplo.datosdeportivosapi.model.dto.protesto.Protesto;
 import teste.exemplo.datosdeportivosapi.repository.andamento.AndamentoRepository;
 import teste.exemplo.datosdeportivosapi.repository.protesto.ProtestoRepository;
@@ -21,13 +22,11 @@ public class AndamentoService {
 
 
     public Collection<Andamento> findallprotocolos() {
-
         return andamentoRepository.findallprotocolos();
     }
 
     public Collection<Andamento> getbyID(Long protocolo) {
         return andamentoRepository.findAllById(protocolo);
-
     }
 
     public Collection<Andamento> findallCertidao(){
@@ -41,13 +40,19 @@ public class AndamentoService {
     public Collection<Protesto> findallprotestos(){
         return protestoRepository.findAllProtesto();
     }
+
     public Collection<Protesto> getProtestoByid(Long protocolo){
         return protestoRepository.findAllProtestoId(protocolo);
     }
 
 
+    public Collection<Documento> findalldocumentos() {
+        return protestoRepository.findAllDocumento();
+    }
 
-
+    public Collection<Documento> getDocumentoByid(Long protocolo){
+        return protestoRepository.findAllDocumentoById(protocolo);
+    }
 }
 
 

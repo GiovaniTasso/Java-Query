@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
-public interface Protesto {
+public interface Documento {
 
     @Value("#{target.cd_protocolo}")
     Long getprotocolo();
@@ -13,6 +14,8 @@ public interface Protesto {
     String getnmAndamento();
     @Value("#{target.dt_andamento}")
     LocalDate getdtAndamento();
-    LocalDateTime gethrAndamento();
+    @Value("#{target.hr_andamento}")
+    LocalTime gethrAndamento();
     String getnmArquivo();
 }
+

@@ -1,5 +1,6 @@
 package teste.exemplo.datosdeportivosapi.controller;
 
+import jakarta.servlet.http.PushBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import teste.exemplo.datosdeportivosapi.model.dto.andamento.Andamento;
+import teste.exemplo.datosdeportivosapi.model.dto.protesto.Documento;
 import teste.exemplo.datosdeportivosapi.model.dto.protesto.Protesto;
 import teste.exemplo.datosdeportivosapi.service.AndamentoService;
 
@@ -31,7 +33,6 @@ public class AndamentoController {
 
     @GetMapping
     public Collection<Andamento> list(){
-
         return andamentoService.findallprotocolos();
     }
 
@@ -63,6 +64,21 @@ public class AndamentoController {
         }
         return ResponseEntity.ok(protestos);
     }
+
+    @GetMapping(value = "/nt/protocolo")
+    public Collection<Documento> listadocumento(){
+        return andamentoService.findalldocumentos();
+    }
+
+    @GetMapping(value = "/nt/protocolo/{protocolo}")
+    public ResponseEntity<Collection<Documento>> getDocumentoById(@PathVariable Long protocolo){
+        Collection<Documento> protestos = andamentoService.getDocumentoByid(protocolo);
+        if (protestos == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(protestos);
+    }
+
 
 
 }
