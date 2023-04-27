@@ -21,37 +21,22 @@ public class AndamentoService {
     ProtestoRepository protestoRepository;
 
 
-    public Collection<Andamento> findallprotocolos() {
-        return andamentoRepository.findallprotocolos();
+
+    public Collection<Andamento> getAndamentobyProtocolo(Long protocolo) {
+
+        return andamentoRepository.findAllAndamentoByProtocolo(protocolo);
     }
 
-    public Collection<Andamento> getbyID(Long protocolo) {
-        return andamentoRepository.findAllById(protocolo);
+    public Collection<Andamento> getCertidaoByProtocolo(Long protocolo){
+        return andamentoRepository.findAllCertidaobyProtocolo(protocolo);
     }
 
-    public Collection<Andamento> findallCertidao(){
-        return andamentoRepository.findallcertidao();
+    public Collection<Protesto> getProtestoByProtocolo(Long protocolo){
+        return protestoRepository.findAllProtestoByProtocolo(protocolo);
     }
 
-    public Collection<Andamento> getCertidaoByid(Long protocolo){
-        return andamentoRepository.findAllCertidaobyId(protocolo);
-    }
-
-    public Collection<Protesto> findallprotestos(){
-        return protestoRepository.findAllProtesto();
-    }
-
-    public Collection<Protesto> getProtestoByid(Long protocolo){
-        return protestoRepository.findAllProtestoId(protocolo);
-    }
-
-
-    public Collection<Documento> findalldocumentos() {
-        return protestoRepository.findAllDocumento();
-    }
-
-    public Collection<Documento> getDocumentoByid(Long protocolo){
-        return protestoRepository.findAllDocumentoById(protocolo);
+    public Collection<Documento> getDocumentoByProtocolo(Long protocolo){
+        return protestoRepository.findAllDocumentoByProtocolo(protocolo);
     }
 }
 

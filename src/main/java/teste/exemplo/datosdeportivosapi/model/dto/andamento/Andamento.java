@@ -6,8 +6,7 @@ import java.time.LocalDateTime;
 public interface Andamento {
 
 
-    @Value("#{target.protocolo}")
-    Long getprotocolo();
+
     @Value("#{target.tipo}")
     String getnmAndamento();
     @Value("#{target.data_entrada}")

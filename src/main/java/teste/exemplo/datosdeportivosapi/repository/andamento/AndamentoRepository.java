@@ -14,38 +14,25 @@ import java.util.Collection;
 @Repository
 public interface AndamentoRepository extends JpaRepository<AndamentoClass,Long> {
 
-    @Query(value = "select x.tipo, x.data_entrada, x.hora, x.data_prevista, y.protocolo " +
-            "from andamento x " +
-            "inner join prenotacao y " +
-            "on x.protocolo = y.protocolo "
-            , nativeQuery = true)
-    Collection<Andamento> findallprotocolos();
 
     @Query(value = "select x.tipo, x.data_entrada, x.hora, x.data_prevista, y.protocolo " +
             "from andamento x " +
             "inner join prenotacao y " +
             "on x.protocolo = y.protocolo " +
             "where y.protocolo = :protocolo " +
-            "order by x.data_entrada",
+            "order by x.data_entrada, x.hora",
             nativeQuery = true)
-    Collection<Andamento> findAllById(@Param("protocolo") Long protocolo);
+    Collection<Andamento> findAllAndamentoByProtocolo(@Param("protocolo") Long protocolo);
 
-    @Query(value = "select c.protocolo, a.tipo, a.data_entrada, a.hora, a.data_prevista " +
-            "from certidao c " +
-            "inner join andamento_certidao a " +
-            "on a.protocolo = c.protocolo " +
-            "order by a.data_entrada"
-            , nativeQuery = true)
-    Collection<Andamento> findallcertidao();
 
-    @Query(value = "select c.protocolo, a.tipo, a.data_entrada, a.hora, a.data_prevista " +
+    @Query(value = "select a.tipo, a.data_entrada, a.hora, a.data_prevista, c.protocolo " +
             "from certidao c " +
             "inner join andamento_certidao a " +
             "on a.protocolo = c.protocolo " +
             "where a.protocolo = :protocolo " +
-            "order by a.data_entrada"
+            "order by a.data_entrada, a.hora"
             , nativeQuery = true)
-    Collection<Andamento> findAllCertidaobyId(@Param("protocolo") Long protocolo);
+    Collection<Andamento> findAllCertidaobyProtocolo(@Param("protocolo") Long protocolo);
 
 
 

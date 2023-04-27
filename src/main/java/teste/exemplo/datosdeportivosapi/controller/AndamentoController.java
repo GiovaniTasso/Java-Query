@@ -23,56 +23,36 @@ public class AndamentoController {
 
 
     @GetMapping(value = "/ri/protocolo/{protocolo}")
-    public ResponseEntity<Collection<Andamento>> getbyID(@PathVariable Long protocolo){
-        Collection<Andamento> andamentos = andamentoService.getbyID(protocolo);
+    public ResponseEntity<Collection<Andamento>> getAndamentobyProtocolo(@PathVariable Long protocolo){
+        Collection<Andamento> andamentos = andamentoService.getAndamentobyProtocolo(protocolo);
         if (andamentos == null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(andamentos);
-    }
-
-    @GetMapping
-    public Collection<Andamento> list(){
-        return andamentoService.findallprotocolos();
-    }
-
-    @GetMapping(value = "/certidao")
-    public Collection<Andamento> listcertidao(){
-        return andamentoService.findallCertidao();
     }
 
     @GetMapping(value = "/ri/certidao/{protocolo}")
-    public ResponseEntity<Collection<Andamento>> getCertidaoByid(@PathVariable Long protocolo){
-        Collection<Andamento> andamentos = andamentoService.getCertidaoByid(protocolo);
+    public ResponseEntity<Collection<Andamento>> getCertidaoByProtocolo(@PathVariable Long protocolo){
+        Collection<Andamento> andamentos = andamentoService.getCertidaoByProtocolo(protocolo);
         if (andamentos == null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(andamentos);
     }
 
-    @GetMapping(value = "/protesto")
-    public Collection<Protesto> listaprotesto(){
-
-        return andamentoService.findallprotestos();
-    }
 
     @GetMapping(value = "/pt/protocolo/{protocolo}")
-    public ResponseEntity<Collection<Protesto>> getProtestoByid(@PathVariable Long protocolo){
-        Collection<Protesto> protestos = andamentoService.getProtestoByid(protocolo);
+    public ResponseEntity<Collection<Protesto>> getProtestoByProtocolo(@PathVariable Long protocolo){
+        Collection<Protesto> protestos = andamentoService.getProtestoByProtocolo(protocolo);
         if (protestos == null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(protestos);
     }
 
-    @GetMapping(value = "/nt/protocolo")
-    public Collection<Documento> listadocumento(){
-        return andamentoService.findalldocumentos();
-    }
-
     @GetMapping(value = "/nt/protocolo/{protocolo}")
-    public ResponseEntity<Collection<Documento>> getDocumentoById(@PathVariable Long protocolo){
-        Collection<Documento> protestos = andamentoService.getDocumentoByid(protocolo);
+    public ResponseEntity<Collection<Documento>> getDocumentoByProtocolo(@PathVariable Long protocolo){
+        Collection<Documento> protestos = andamentoService.getDocumentoByProtocolo(protocolo);
         if (protestos == null){
             return ResponseEntity.notFound().build();
         }
