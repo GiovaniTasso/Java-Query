@@ -12,7 +12,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import teste.exemplo.datosdeportivosapi.model.dto.andamento.Andamento;
 import teste.exemplo.datosdeportivosapi.model.entity.andamentoclass.AndamentoClass;
 import teste.exemplo.datosdeportivosapi.repository.andamento.AndamentoRepository;
 
